@@ -1,0 +1,18 @@
+# ALIASES
+
+alias composer='php ${HOME}/Workspace/bin/composer/composer'
+alias node-dev='NODE_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 node'
+alias fuck='thefuck'
+
+# NODE - NPM
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Teamocil Autocompletion
+compctl -g '~/.teamocil/*(:t:r)' teamocil
+
+# Code
+code () { 
+	VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
+}
