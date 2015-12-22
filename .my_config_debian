@@ -1,0 +1,18 @@
+# Aliases
+alias workspace='cd ~/Documents'
+alias node-dev='NODE_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 node'
+alias fuck='thefuck'
+
+# NPM
+export NPM_PACKAGES="~/app/npm"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+unset MANPATH
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# TSHARK
+
+function t2w {
+	HOST=$1 shift;
+	ssh $HOST tshark $@ -w - | wireshark -k -i -
+}

@@ -2,7 +2,8 @@
 
 ### General config
 
-- `.my_config` : personal config
+- `.my_config_macosx` : personal config on macosx
+- `.my_config_debian` : personal config on debian
 - `.vimrc` : vim config
 - `.zsh_rc` : Zsh config
 
