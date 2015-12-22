@@ -11,6 +11,10 @@ source install/teamocil.sh
 if [ "$(uname)" == "Darwin" ]; then
 	echo "Running on OSX"
 
+	echo "Updating my_config file for macosx"
+	rm $HOME/.my_config
+	ln -s $HOME/.dotfiles/zsh/macosx/my_config.symlink $HOME/.my_config
+
 	echo "Brewing all the things"
 	source install/brew.sh
 
