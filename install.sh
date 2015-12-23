@@ -5,24 +5,31 @@ echo "Installing dotfiles"
 echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
-source install/link.sh
-source install/teamocil.sh
+read -p "Create config files ? [Yn] " answer
+if [ -z "$answer" ] || [ ${answer:0:1} -eq "Y" ] || [ ${answer:0:1} -eq "y" ] ; then
+	source install/link.sh
+fi
+
+read -p "Install teamocil ? [Yn] " answer
+if [ -z "$answer" ] || [ ${answer:0:1} -eq "Y" ] || [ ${answer:0:1} -eq "y" ] ; then
+	source install/teamocil.sh
+fi
 
 if [ "$(uname)" == "Darwin" ]; then
 	echo "Running on OSX"
 
 	if [ ! -e "$HOME/.my_config" ] ; then
-		ln -s $HOME/.dotfiles/zsh/macosx/my_config.symlink $HOME/.my_config
+#		ln -s $HOME/.dotfiles/zsh/macosx/my_config.symlink $HOME/.my_config
 	fi
 
 	echo "Brewing all the things"
-	source install/macosx/brew.sh
+#	source install/macosx/brew.sh
 
 	echo "Installing node (from nvm)"
-	source install/nvm.sh
+#	source install/nvm.sh
 
 	echo "Setting editors config"
-	source install/macosx/editors.sh
+#	source install/macosx/editors.sh
 else
 	echo "Running on Linux (Debian)"
 
@@ -41,12 +48,12 @@ else
 fi
 
 echo "installing npm global packages"
-source install/npm.sh
+#source install/npm.sh
 
 echo "creating vim directories"
-mkdir -p ~/.vim-tmp
+#mkdir -p ~/.vim-tmp
 
 echo "Configuring zsh as default shell"
-chsh -s $(which zsh)
+#chsh -s $(which zsh)
 
 echo "Done."
