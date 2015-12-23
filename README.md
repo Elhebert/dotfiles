@@ -1,5 +1,3 @@
 # Dotfiles
 
-Inspired by (nick nisi)[https://github.com/nicknisi/dotfiles]
-
-
+Inspired by [nick nisi](https://github.com/nicknisi/dotfiles)
