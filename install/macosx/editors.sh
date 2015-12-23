@@ -18,6 +18,7 @@ if test $(which code) ; then
 			VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
 		}
 
-	END
+END
 fi
 
+exit 0

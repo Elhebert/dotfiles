@@ -14,6 +14,9 @@ brew install wget
 brew install git
 brew install tmux
 brew install zsh
-brew install nvm
+
+if [[ $nvm -eq 1 ]] ; then
+	brew install nvm
+fi
 
 exit 0

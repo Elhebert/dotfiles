@@ -1,0 +1,24 @@
+windows:
+  - name: docker
+    root: ~/Workspace/docker/mongo
+    layout: single
+    panes:
+    - commands:
+      - docker-machine default start
+      - docker-machine env default
+      - eval "$(docker-machine env default)"
+      - docker-compose up
+  - name: sources
+    root: ~/Workspace/sites/elhebert
+    layout: even-horizontal
+    panes:
+    - commands:
+      - website
+      - git pull
+      - clear
+      - git status
+    - commands:
+      - api
+      - git pull
+      - clear
+      - git status

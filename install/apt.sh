@@ -7,4 +7,9 @@ sudo apt-get install wget -y
 sudo apt-get install git -y
 sudo apt-get install tmux -y
 sudo apt-get install zsh -y
-sudo apt-get install nvm -y
+
+if [[ $nvm -eq 1 ]] ; then
+	sudo apt-get install nvm -y
+fi
+
+exit 0
