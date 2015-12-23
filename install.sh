@@ -3,6 +3,7 @@
 echo "Installing dotfiles"
 
 source variables.sh
+source install/link.sh
 
 if [ "$(uname)" == "Darwin" ]; then
 	echo "Running on OSX"
@@ -22,8 +23,12 @@ else
 	source install/debian/editor.sh
 fi
 
-echo "Linking my config"
-ln -s $HOME/.dotfiles/my_config.symlink $HOME/.my_config
+if [ -e $HOME/.my_config ] ; then
+	echo "~/.my_config already exists... Skipping"
+else
+	echo "Creating symlink for .dotfiles/my_config.symlink"
+	ln -s $HOME/.dotfiles/my_config.symlink $HOME/.my_config
+fi
 
 if [[ $nvm -eq 1 ]] ; then
 	echo "Installing node (from nvm)"
@@ -32,7 +37,7 @@ fi
 
 if [[ $npm -eq 1 ]] ; then
 	echo "installing npm global packages"
-	#source install/npm.sh
+	source install/npm.sh
 fi
 
 echo "Creating vim directories"

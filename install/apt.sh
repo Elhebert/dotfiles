@@ -11,5 +11,3 @@ sudo apt-get install zsh -y
 if [[ $nvm -eq 1 ]] ; then
 	sudo apt-get install nvm -y
 fi
-
-exit 0

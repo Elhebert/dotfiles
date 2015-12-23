@@ -4,8 +4,8 @@ DOTFILES=$HOME/.dotfiles
 
 echo -e "\nCreating symlinks"
 
-linkables=$( find -H "$DOTFILES" -maxdepth 2 -name '*.symlink' )
-for file in $linkables ; done
+linkables=$( find -H "$DOTFILES" -mindepth 2 -maxdepth 2 -name '*.symlink' )
+for file in $linkables ; do
 	target="$HOME/.$( basename $file ".symlink" )"
 	if [ -e $target ]; then
 		echo "~${target#$HOME} already exists... Skipping."
@@ -16,7 +16,5 @@ for file in $linkables ; done
 done
 
 if [[ $teamocil -eq 1 ]]; then
-	source $DOTFILES/teamocil/install.sh
+	source $DOTFILES/tmux/teamocil/install.sh
 fi
-
-exit 0

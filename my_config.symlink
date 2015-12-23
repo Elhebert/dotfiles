@@ -5,8 +5,6 @@ alias node-dev='NODE_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 node'
 alias fuck='thefuck'
 
 # Node - nvm
-
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Teamocil Autocompletion in zsh
@@ -16,4 +14,9 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 function t2w {
 	HOST=$1 shift;
 	ssh $HOST tshark $@ -w - | wireshark -k -i -
+}
+
+# Code
+code () {
+	VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;
 }

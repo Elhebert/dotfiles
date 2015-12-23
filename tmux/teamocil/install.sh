@@ -9,7 +9,7 @@ if [ ! -d $HOME/.teamocil ] ; then
 	mkdir ~/.teamocil
 fi
 
-linkables=$( find -H "$HOME/.dotfiles/teamocil" -maxdepth 1 -name '*.symlink' )
+linkables=$( find -H "$HOME/.dotfiles/tmux/teamocil" -maxdepth 1 -name '*.symlink' )
 for file in $linkables ; do
 	target="$HOME/.teamocil/$( basename $file ".symlink" )"
 	if [ -e $target ]; then

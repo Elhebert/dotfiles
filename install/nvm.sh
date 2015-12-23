@@ -2,5 +2,3 @@
 
 nvm install stable
 nvm alias default stable
-
-exit 0

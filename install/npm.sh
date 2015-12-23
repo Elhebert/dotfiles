@@ -6,5 +6,3 @@ npm install -g bower
 npm install -g caniuse-cmd
 npm install -g jshint
 npm install -g jscs
-
-exit 0

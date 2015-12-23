@@ -1,7 +1,6 @@
 windows:
   - name: docker
     root: ~/Workspace/docker/mongo
-    layout: single
     panes:
     - commands:
       - docker-machine default start

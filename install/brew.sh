@@ -17,6 +17,6 @@ brew install zsh
 
 if [[ $nvm -eq 1 ]] ; then
 	brew install nvm
-fi
 
-exit 0
+	source $(brew --prefix nvm)/nvm.sh
+fi

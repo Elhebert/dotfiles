@@ -11,6 +11,10 @@
 # normal tmux key bindings. This is intended as an example not as to be used
 # as-is.
 
+# tmux display things in 256 colors
+set -g default-terminal "screen-256color"
+set -g status-utf8 on
+
 # Set the prefix to ^A.
 unbind C-b
 set -g prefix ^A
@@ -103,9 +107,7 @@ bind BTab select-pane -t:.-
 unbind '"'
 bind '"' choose-window
 #focus pane mouse click
-setw -g mode-mouse on
-set-option -g mouse-select-pane on
-set-option -g mouse-resize-pane on
+set -g mouse on
 #bigger history
 set -g history-limit 100000
 #copy mode
@@ -122,7 +124,7 @@ setw -g mode-keys vi
 #unbind -t vi-copy Enter
 #bind-key -t vi-copy Enter copy-pipe "xclip -i selection clipboard"
 #windows notification
-setw -g monitor-activity on
+set -g monitor-activity on
 set -g visual-activity on
 
 # Plugin Manager
@@ -131,7 +133,7 @@ set -g visual-activity on
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
-# # Other examples:
+#  Other examples:
 # # set -g @plugin 'github_username/plugin_name'
 # # set -g @plugin 'git@github.com/user/plugin'
 # # set -g @plugin 'git@bitbucket.com/user/plugin'
