@@ -93,6 +93,20 @@ task wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.
 task sudo dpkg -i google-chrome*.deb
 task rm google-chrome*.deb
 
+name "Install Numix Icons"
+task cd ~/Downloads
+task git clone https://github.com/numixproject/numix-icon-theme-circle.git
+task cd numix-icon-theme-circle
+task sudo mv Numix-Circle /usr/share/icons
+task sudo mv Numix-Circle-Light /usr/share/icons
+task cd ..
+task rm -rf Numix-Circle Numix-Circle-Light
+
+name "Install Arc-Theme"
+task echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /' >> /etc/apt/sources.list.d/arc-theme.list
+task apt-get update
+task apt-get install arc-theme
+
 name "=== dotFILES ==="
 
 name "Remove default configuration files"
@@ -126,3 +140,13 @@ task chsh -s $(which zsh)
 
 name "Set terminal theme"
 task dconf load /org/gnome/terminal/legacy/profiles:/:042ded31-cffe-4494-a3f3-c6004aec3dac/ < terminal
+
+name "=== UI/UX ==="
+task gsettings set org.gnome.shell.extensions.user-theme name "Ark-Dark"
+task gsettings set org.gnome.desktop.interface gtk-theme "Ark-Dark"
+task gsettings set org.gnome.desktop.wm.preferences theme "Ark-Dark"
+task gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
+task gsettings set org.gnome.desktop.interface clock-format "12h"
+task gsettings set org.gnome.desktop.interface clock-show-date true
+task gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+task gsettings set org.gnome.desktip.input-sources xhb-options ['caps:ctrl_modifier']
