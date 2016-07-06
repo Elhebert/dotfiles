@@ -1,15 +1,15 @@
 #!/bin/bash
 
 name () {
-	echo "\033[1;36m ${1} \033[0m"
+    echo "\033[1;36m ${1} \033[0m"
 }
 
 task () {
-	echo "\033[0;34m ${*}\033[0m"
-	$* || {
-		echo "\033[0;31m Failed " 1>&2 ;
-		exit 1 ;
-	}
+    echo "\033[0;34m ${*}\033[0m"
+    $* || {
+        echo "\033[0;31m Failed " 1>&2 ;
+        exit 1 ;
+    }
 }
 
 name "=== FILE STRUCTURE ==="
@@ -56,17 +56,17 @@ task rm -rf tmux-2.1.tar.gz tmux-2.1
 
 name "Install vim"
 task sudo apt-get install -y libncurses5-dev libgtk2.0-dev \
-		libatk1.0-dev  libbonoboui2-dev libcairo2-dev \
-		libx11-dev libxpm-dev libxt-dev python-dev
+        libatk1.0-dev  libbonoboui2-dev libcairo2-dev \
+        libx11-dev libxpm-dev libxt-dev python-dev
 task cd ~/Downloads
 task git clone https://github.com/vim/vim.git
 task cd vim
 task ./configure \
-		--with-features=huge \
-		--enable-pythoninterp \
-		--with-python-config-dir=/usr/lib/python2.7/config \
-		--enable-python3interp \
-		--with-python3-config-dir=/usr/lib/python3.4/config
+        --with-features=huge \
+        --enable-pythoninterp \
+        --with-python-config-dir=/usr/lib/python2.7/config \
+        --enable-python3interp \
+        --with-python3-config-dir=/usr/lib/python3.4/config
 task make
 task sudo make install
 task cd ..
@@ -75,8 +75,10 @@ task rm -rf vim
 name "Install redshift"
 task sudo apt-get install build-essential libxcb-randr0-dev
 task ./bootstrap
-task ./configure --enable-randr --prefix=$HOME/app/redshift/root \
-   --with-systemduserunitdir=$HOME/.config/systemd/user
+task ./configure
+        --enable-randr \
+        --prefix=$HOME/app/redshift/root \
+        --with-systemduserunitdir=$HOME/.config/systemd/user
 task make
 task sudo make install
 
