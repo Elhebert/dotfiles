@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ***************************************
+# FUNCTIONS
+# ***************************************
 name () {
     echo "\033[1;36m ${1} \033[0m"
 }
@@ -12,14 +15,25 @@ task () {
     }
 }
 
+# ***************************************
+# VARIABLES
+# ***************************************
+
+dotfiles_dest = ("~/.tmux.conf" "~/.vimrc" "~/.zshrc" "~/.config/redshift.conf" "~/.atom/config.cson")
+dotfiles_src = ("~/.dotfiles/.tmux.conf" "~/.dotfiles/.vimrc" "~/.dotfiles/.zshrc" "~/.dotfiles/redshift.conf" "~/.dotfiles/atom/config.cson")
+
+# ***************************************
+# SCRIPT
+# ***************************************
+
 name "=== FILE STRUCTURE ==="
 
 name "Create app directory"
 task mkdir ~/app
 
 name "Create wrokspace directory"
-
 task mkdir ~/workspace
+
 name "=== PACKAGES ==="
 
 name "Install htop"
@@ -111,44 +125,38 @@ task apt-get install arc-theme
 
 name "=== dotFILES ==="
 
-name "Remove default configuration files"
-if [ -f "~/.tmux.conf" ]; then
-    task rm ~/.tmux.conf
-fi
-if [ -f "~/.vimrc" ]; then
-    task rm ~/.vimrc
-fi
-if [ -f "~/.zshrc" ]; then
-    task rm ~/.zshrc
-fi
-if [ -f "~/.config/redshift.conf" ]; then
-    task rm ~/.config/redshift.conf
-fi
-if [ -f "~/.atom/config.cson" ]; then
-    task rm ~/.atom/config.cson
-fi
-
-name "Create symlinks"
-task ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-task ln -s ~/.dotfiles/.vimrc ~/.vimrc
-task ln -s ~/.dotfiles/.zshrc ~/.zshrc
-task ln -s ~/.dotfiles/redshift.conf ~/.config/redshift.conf
-task ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+name "Remove default configuration files and create symlinks"
+for file in ${!dotfiles_dest[@]}
+do
+	if [ -f ${dotfiles_dest[$file]}; then
+	    task rm ${dotfiles_dest[$file]}
+	fi
+	task ln -s ${dotfiles_src[$file]} ${dotfiles_dest[$file]}
+done
 
 name "=== CONFIGURATION ==="
 
 name "Set zsh as default shell"
 task chsh -s $(which zsh)
 
+name "=== UI/UX ==="
 name "Set terminal theme"
 task dconf load /org/gnome/terminal/legacy/profiles:/:042ded31-cffe-4494-a3f3-c6004aec3dac/ < terminal
 
-name "=== UI/UX ==="
+name "Set desktop theme"
 task gsettings set org.gnome.shell.extensions.user-theme name "Ark-Dark"
 task gsettings set org.gnome.desktop.interface gtk-theme "Ark-Dark"
 task gsettings set org.gnome.desktop.wm.preferences theme "Ark-Dark"
+
+name "Set icon theme"
 task gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
+
+name "Set date settings"
 task gsettings set org.gnome.desktop.interface clock-format "12h"
 task gsettings set org.gnome.desktop.interface clock-show-date true
+
+name "Set default window buttons"
 task gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+name "Map caps as a ctrl"
 task gsettings set org.gnome.desktip.input-sources xhb-options ['caps:ctrl_modifier']
