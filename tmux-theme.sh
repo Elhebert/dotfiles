@@ -1,25 +1,59 @@
 #### COLOUR
 
-tm_icon="☀"
+tm_color_active=colour38
+tm_color_inactive=colour241
+tm_color_activity=colour68
+tm_color_feature=colour38
+tm_active_border_color=colour10
 
 # separators
-tm_separator_left_bold="◀"
 tm_separator_left_thin="❮"
-tm_separator_right_bold="▶"
 tm_separator_right_thin="❯"
 
-set -g status-interval 2
-set -g status-left-length 52
-set -g status-right-length 451
-set -g status-fg white
-set -g status-bg colour234
-set -g window-status-activity-attr bold
-set -g pane-border-fg colour245
-set -g pane-active-border-fg colour39
-set -g message-fg colour16
-set -g message-bg colour221
-set -g message-attr bold
-set -g status-left '#[fg=colour235,bg=colour252,bold] ❐ #S #[fg=colour252,bg=colour238,nobold]#[fg=colour245,bg=colour238,bold] #(whoami)#[fg=colour238,bg=colour234,nobold]'
-set -g window-status-format "#[fg=white,bg=colour234] #I #W "
-set -g window-status-current-format "#[fg=colour234,bg=colour39]#[fg=colour25,bg=colour39,noreverse,bold] #I  #W #[fg=colour39,bg=colour234,nobold]"
-set -g status-right "#[fg=colour235,bg=colour252,bold] %d %b#[fg=colour238,bg=colour252,nobold]#[fg=colour245,bg=colour238,bold]%r"
+set -g status-left-length 32
+set -g status-right-length 150
+set -g status-interval 5
+
+# default statusbar colors
+# set-option -g status-bg colour0
+set-option -g status-fg $tm_color_active
+set-option -g status-bg default
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg $tm_color_inactive
+set-window-option -g window-status-bg default
+set-window-option -g window-status-format "#I #W $tm_separator_right_thin"
+
+# active window title colors
+set-window-option -g window-status-current-fg $tm_color_active
+set-window-option -g window-status-current-bg default
+set-window-option -g  window-status-current-format "#[bold]#I #W $tm_separator_right_thin"
+
+# activity window
+set-window-option -g window-status-activity-fg $tm_color_activity
+set-window-option -g window-status-activity-bg default
+set-window-option -g window-status-activity-attr none
+
+
+# pane border
+set-option -g pane-border-fg $tm_color_inactive
+set-option -g pane-active-border-fg $tm_active_border_color
+
+# message text
+set-option -g message-bg default
+set-option -g message-fg $tm_color_active
+
+# pane number display
+set-option -g display-panes-active-colour $tm_color_active
+set-option -g display-panes-colour $tm_color_inactive
+
+# clock
+set-window-option -g clock-mode-colour $tm_color_active
+
+tm_date="#[fg=$tm_color_inactive]$tm_separator_left_thin %a %e %b %I:%M %p"
+tm_host="#[fg=$tm_color_feature,bold]$tm_separator_left_thin #h"
+tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S $tm_separator_right_thin"
+
+set -g status-left $tm_session_name' '
+set -g status-right $tm_date' '$tm_host
