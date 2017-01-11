@@ -18,3 +18,10 @@ In this repository I'll version the configuration and customization for the foll
 - VS Code
 
 With of course a script that set-up a "dev-ready" machine with all the tools, libs and software I need.
+
+
+### Preview
+
+#### Mac
+
+![macos](./screenshot.png)
