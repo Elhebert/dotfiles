@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"All Autocomplete",
+		"Boxy Theme",
+		"ColorHelper",
+		"Dockerfile Syntax Highlighting",
+		"Emmet",
+		"FuzzyFilePath",
+		"GitGutter",
+		"JavaScript Completions",
+		"JavaScriptNext - ES6 Syntax",
+		"npm",
+		"Package Control",
+		"Sass",
+		"SCSS",
+		"SublimeLinter",
+		"SublimeLinter-ruby",
+		"Twig",
+		"TypeScript",
+		"Vue Syntax Highlight"
+	]
+}
