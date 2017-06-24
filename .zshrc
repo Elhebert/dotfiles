@@ -53,7 +53,9 @@ export NVM_DIR=~/app/nvm
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
 nvm use default
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # **************************************
 # ALIASES
 # **************************************
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias glog="git log --graph --date=relative --abbrev-commit"
