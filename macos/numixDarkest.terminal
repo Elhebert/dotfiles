@@ -168,15 +168,19 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
 	AAGGoKQHCBESVSRudWxs1AkKCwwNDg8QVk5TU2l6ZVhOU2ZGbGFnc1ZOU05hbWVWJGNs
-	YXNzI0AoAAAAAAAAEBCAAoADXxAaU2F1Y2VDb2RlUG93ZXJsaW5lLVJlZ3VsYXLSExQV
-	FlokY2xhc3NuYW1lWCRjbGFzc2VzVk5TRm9udKIVF1hOU09iamVjdF8QD05TS2V5ZWRB
-	cmNoaXZlctEaG1Ryb290gAEIERojLTI3PEJLUltiaXJ0dniVmqWutbjB09bbAAAAAAAA
-	AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAN0=
+	YXNzI0AsAAAAAAAAEBCAAoADXxAPRmlyYUNvZGUtTWVkaXVt0hMUFRZaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGhtU
+	cm9vdIABCBEaIy0yNzxCS1JbYmlydHZ4io+ao6qttsjL0AAAAAAAAAEBAAAAAAAAABwA
+	AAAAAAAAAAAAAAAAAADS
 	</data>
 	<key>FontAntialias</key>
 	<true/>
+	<key>FontHeightSpacing</key>
+	<real>1.2</real>
+	<key>FontWidthSpacing</key>
+	<integer>1</integer>
 	<key>ProfileCurrentVersion</key>
-	<real>2.04</real>
+	<real>2.0499999999999998</real>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -203,6 +207,8 @@
 	dmVy0RcYVHJvb3SAAQgRGiMtMjc7QUhOW2KMjpCVoKmxtL3P0tcAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>UseBrightBold</key>
+	<false/>
 	<key>name</key>
 	<string>numixDarkest</string>
 	<key>type</key>
