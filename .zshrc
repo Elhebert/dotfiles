@@ -29,12 +29,14 @@ if [[ -d ~/.dotfiles/bin  ]]; then
     export PATH=~/.dotfiles/bin:$PATH
 fi
 
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+
 if [[ -d ~/bin  ]]; then
     export PATH=~/bin:$PATH
 fi
 
-if [[ -d ~/app/composer ]]; then
-	export PATH=~/app/composer:$PATH
+if [[ -d ~/.composer/vendor/bin ]]; then
+	export PATH=~/.composer/vendor/bin:$PATH
 fi
 
 # ***************************************
@@ -49,9 +51,9 @@ export ZSH_TMUX_AUTOCONNECT=true
 # ***************************************
 export NVM_DIR=~/app/nvm
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
-nvm use node
+nvm use default
 
 # **************************************
 # ALIASES
 # **************************************
-alias composer='php ~/app/composer/composer'
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
