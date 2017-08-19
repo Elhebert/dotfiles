@@ -4,7 +4,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="avit"
-plugins=(git, tmux)
+plugins=(tmux zsh-autosuggestions osx zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # ***************************************
@@ -52,8 +52,15 @@ export ZSH_TMUX_AUTOCONNECT=true
 export NVM_DIR=~/app/nvm
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
 nvm use default
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # **************************************
 # ALIASES
 # **************************************
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval $(thefuck --alias)
+
+# **************************************
+# ZSH
+# **************************************
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
