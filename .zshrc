@@ -62,5 +62,4 @@ eval $(thefuck --alias)
 # **************************************
 # ZSH
 # **************************************
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
