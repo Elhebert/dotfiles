@@ -1,65 +1,96 @@
-# ***************************************
-# OH-MY-ZSH
-# ***************************************
+# Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="avit"
-plugins=(tmux zsh-autosuggestions osx zsh-syntax-highlighting)
+# Path to your dotfiles installation..
+export DOTFILES=$HOME/.dotfiles
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="sunrise"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="dd/mm/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$DOTFILES/zsh
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
 source $ZSH/oh-my-zsh.sh
 
-# ***************************************
-# MISC
-# ***************************************
-export REPORTTIME=10 # display how long all tasks over 10 seconds take
+# User configuration
 
-[[ -e ~/.terminfo  ]] && export TERMINFO_DIRS=~/.terminfo:/usr/share/terminfo
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-export EDITOR=/usr/bin/vim
-
-# ***************************************
-# PATH
-# ***************************************
-export PATH="/usr/local/bin:$PATH:`yarn global bin`"
-
-if [[ -d /usr/local/sbin  ]]; then
-    export PATH=/usr/local/sbin:$PATH
-fi
-
-if [[ -d ~/.dotfiles/bin  ]]; then
-    export PATH=~/.dotfiles/bin:$PATH
-fi
-
-export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
-
-if [[ -d ~/bin  ]]; then
-    export PATH=~/bin:$PATH
-fi
-
-if [[ -d ~/.composer/vendor/bin ]]; then
-	export PATH=~/.composer/vendor/bin:$PATH
-fi
-
-# ***************************************
-# TMUX
-# ***************************************
+export REPORTTIME=10
 export TERM=xterm-256color
-export ZSH_TMUX_AUTOSTART=true
-export ZSH_TMUX_AUTOCONNECT=true
 
-# ***************************************
-# NVM
-# ***************************************
-export NVM_DIR=~/app/nvm
-[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
-nvm use default
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# **************************************
-# ALIASES
-# **************************************
-eval $(thefuck --alias)
+# You may need to manually set your language environment
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-# **************************************
-# ZSH
-# **************************************
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+export EDITOR='vim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"

@@ -1,0 +1,28 @@
+[user]
+	name = Dieter Stinglhamber
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[log]
+	abbrevCommit = true
+
+[alias]
+	s = status -sb
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	cm = commit -m
+	aa = add .
+
+[color]
+	ui = true
+
+[apply]
+	whitespace = fix

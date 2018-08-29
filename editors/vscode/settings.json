@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.fontSize": 16,
-    "editor.lineHeight": 27,
+    "editor.fontSize": 20,
+    "editor.lineHeight": 35,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
     "editor.renderIndentGuides": true,
@@ -10,40 +10,121 @@
         100,
         120
     ],
-    "editor.fontFamily": "Fira Code, Fira Mono Medium For Powerline, Source Code Pro for Powerline",
+    "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
+    "editor.suggestFontSize": 16,
+    "editor.suggestLineHeight": 27,
     "editor.minimap.enabled": true,
-    // "editor.formatOnPaste": true,
     "editor.minimap.renderCharacters": false,
     "editor.tabSize": 2,
-    "editor.wordWrap": 80,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+    "editor.quickSuggestionsDelay": 0,
+    "editor.formatOnPaste": true,
+
+    "diffEditor.ignoreTrimWhitespace": false,
 
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.associations": {
+        ".prettierrc": "json",
+        ".blade.php": "blade",
+        ".php": "php",
+        ".php_cs": "php",
+        ".php_cs.dist": "php",
+        ".pcss": "postcss"
+    },
 
     "git.path": "/usr/bin/git",
 
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.fontAliasing": "antialiased",
+    "workbench.colorTheme": "Nord",
+
+    "explorer.openEditors.visible": 0,
 
     "css.lint.duplicateProperties": "warning",
     "css.lint.zeroUnits": "warning",
+
     "scss.lint.duplicateProperties": "warning",
     "scss.lint.zeroUnits": "warning",
 
-    "php.validate.executablePath": "/usr/local/opt/php71",
-    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "php.validate.executablePath": "/usr/bin/php",
+    "php.suggest.basic": false,
 
     "html.format.indentInnerHtml": true,
 
-    "files.associations": {
-        "*.vue": "vue"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+
+    "blade.format.enable": true,
+
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/public/[abcdefghjklmnopqrstuvwxyz]*": true,
+        "**/public/i[abcdefghijklmopqrstuvwxyz]*": true,
+        "**/vendor/[abcdefghijkmnopqrstuvwxyz]*": true,
+        "**/vendor/l[bcdefghijklmnopqrstuvwxyz]*": true,
+
+        "storage/framework/views": true
     },
 
-    "emmet.syntaxProfiles": {
-        "vue-html": "html"
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.includeLanguages": {
+        "vue": "html"
     },
 
     "[php]": {
+        "editor.tabSize": 4,
+    },
+
+    "[json]": {
         "editor.tabSize": 4
-    }
+    },
+
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false,
+        "files.trimFinalNewlines": false,
+        "editor.fontFamily": "'Fira Code'"
+    },
+
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": true,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "gitlens.gitExplorer.enabled": false,
+    "gitlens.explorers.avatars": false,
+    "gitlens.resultsExplorer.files.compact": false,
+    "gitlens.blame.avatars": false,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ],
+    "gitlens.keymap": "alternate",
+    "gitlens.historyExplorer.enabled": true,
+
+    "intelephense.completionProvider.backslashPrefix": false,
+
+    "php-cs-fixer.allowRisky": true,
+    "php-cs-fixer.config": ".php_cs.dist",
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.lastDownload": 1532925933722,
+
+    "extensions.ignoreRecommendations": false,
+
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.lineHeight": 1.5,
+
+    "window.zoomLevel": 0,
 }

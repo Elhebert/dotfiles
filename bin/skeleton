@@ -1,0 +1,55 @@
+#!/bin/bash
+
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+orange=$(tput setaf 3)
+reset=$(tput sgr0)
+
+CODEEDITOR="code"
+
+PROJECTNAME=$1
+
+echo "🔬  Running checks"
+
+if [ -d "$PROJECTNAME" ]; then
+  echo "❌ ${red}Project directory $PROJECTNAME already exists.${reset}"
+  quit
+fi
+
+if ! hash php 2>/dev/null; then
+  echo "❌ ${red}PHP is not installed.${reset}"
+  quit
+fi
+
+if ! hash git 2>/dev/null; then
+  echo "❌ ${red}Git not installed.${reset}"
+  quit
+fi
+
+echo "🌀  Cloning repository..."
+git clone git@github.com:Altavia-ACT/laravel-skeleton --branch=master --depth=1 "$PROJECTNAME"
+
+cd "$PROJECTNAME" || exit
+
+echo "⚙️  Initialize new repository"
+rm -rf .git
+git init
+git add .
+git commit -m "(feat): Initial commit"
+
+echo "🚚  Running Composer..."
+composer install
+
+echo "📦  Running NPM..."
+npm install
+
+echo "✨  Finalize installation..."
+if [ ! -f .env ]; then
+    cp .env.example .env
+fi
+
+php artisan key:generate
+
+$CODEEDITOR .
+
+echo "✔ You are ready to go"
