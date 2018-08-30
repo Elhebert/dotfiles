@@ -1,5 +1,8 @@
 # PHPUNIT
-alias puf="./vendor/bin/phpunit --filter"
+alias puf="phpunit --filter"
+
+# nvm
+alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 # LS
 # Detect which `ls` flavor is in use

@@ -22,7 +22,6 @@ brew 'zsh-completions'
 
 # Development
 brew 'php'
-broew 'node'
 
 # Code editors
 brew 'vim --with-override-system-vi'
