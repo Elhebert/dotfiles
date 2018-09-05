@@ -24,21 +24,21 @@ brew 'zsh-completions'
 brew 'php'
 
 # Code editors
-brew 'vim --with-override-system-vi'
+brew 'vim', args: ['--with-override-system-vi']
 cask 'phpstorm'
 cask 'pystorm'
 cask 'sublime-text'
 cask 'visual-studio-code'
 
 # Image optimisation
-cask 'imageoptim'
-brew 'imagemagick --with-webp'
 brew 'ffmpeg'
-brew 'guetzli'
-brew 'pngquant'
-brew 'optipng'
-brew 'svgo'
 brew 'gifsicle'
+brew 'guetzli'
+brew 'imagemagick', args: ['--with-webp']
+brew 'optipng'
+brew 'pngquant'
+brew 'svgo'
+cask 'imageoptim'
 
 # Browsers
 cask 'firefox'
@@ -75,15 +75,14 @@ cask 'vlc'
 # Quicklook
 cask 'qlcolorcode'
 cask 'qlmarkdown'
-cask 'quicklook-json'
-cask 'quicklook-csv'
 cask 'qlstephen'
+cask 'quicklook-csv'
+cask 'quicklook-json'
 
 # Fonts
 cask 'font-fira-code'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
-mas 'Keynote', id: 409183694
-mas 'Pages', id: 409201541
+mas 'Bear', id: 1091189122
 mas 'Microsoft Remote Desktop', id: 1295203466
