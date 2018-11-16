@@ -22,27 +22,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ./zsh/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ./zsh/plugins/zsh-autosuggestions
 
-# Config file
-# Remove files if exists and symlinks from .dotfiles
-rm $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-
-rm $HOME/.vimrc
-ln -s $HOME/.dotfiles/.vimrc $HOME/.vimrc
-
-rm $HOME/.nvmrc
-ln -s $HOME/.dotfiles/.nvmrc $HOME/.nvmrc
-
-rm $HOME/.gitconfig
-ln -s $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
-
-rm $HOME/.gitignore_global
-ln -s $HOME/.dotfiles/.gitignore_global $HOME/.gitignore_global
-
 # Node
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-nvm install
-npm install -g npm @vue/cli caniuse-cmd
+npm install -g npm @vue/cli tldr caniuse-cmd
 
 # MacOs preferences
 source .macos

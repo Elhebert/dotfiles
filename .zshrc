@@ -71,6 +71,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+HOMEBREW_NO_ANALYTICS=1
+HOMEBREW_NO_INSECURE_REDIRECT=1
+HOMEBREW_CASK_OPTS=--require-sha
 
 export REPORTTIME=10
 export TERM=xterm-256color

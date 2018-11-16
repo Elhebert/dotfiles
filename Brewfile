@@ -4,10 +4,8 @@ tap 'caskroom/eid'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'homebrew/bundle'
-tap 'homebrew/php'
 
 # Install Binaries
-brew 'awscli'
 brew 'bash'
 brew 'coreutils'
 brew 'git'
@@ -22,11 +20,12 @@ brew 'zsh-completions'
 
 # Development
 brew 'php'
+brew 'node'
 
 # Code editors
 brew 'vim', args: ['--with-override-system-vi']
 cask 'phpstorm'
-cask 'pystorm'
+cask 'pycharm-ce'
 cask 'sublime-text'
 cask 'visual-studio-code'
 
@@ -47,7 +46,7 @@ cask 'firefox-nightly'
 cask 'google-chrome'
 cask 'google-chrome-canary'
 cask 'opera'
-cask 'torbrowser'
+cask 'tor-browser'
 
 # Apps
 cask 'alfred'
@@ -57,19 +56,17 @@ cask 'dropbox'
 cask 'etcher'
 cask 'flux'
 cask 'github'
-cask 'gpg-suite'
 cask 'grammarly'
 cask 'insomnia'
 cask 'iterm2'
 cask 'now'
+cask 'numi'
 cask 'openoffice'
 cask 'sequel-pro'
 cask 'sketch'
 cask 'slack'
 cask 'spectacle'
 cask 'spotify'
-cask 'toggl'
-cask 'transmit'
 cask 'vlc'
 
 # Quicklook
@@ -85,4 +82,3 @@ cask 'font-fira-code'
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
 mas 'Bear', id: 1091189122
-mas 'Microsoft Remote Desktop', id: 1295203466

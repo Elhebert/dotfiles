@@ -9,11 +9,36 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
+# Security                                                               #
+###############################################################################
+
+# Enable firewall with logging
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
+
+# Turn on stealth mode
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+
+# Prevent built-in software as well as code-signed, downloaded software from being whitelisted automatically
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+
+# Deactivate Captive portal
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control.plist Active -bool false
+
+###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
+# Force hibernation and evit FileVault keys from memory
+sudo pmset -a destroyfvkeyonstandby 1
+sudo pmset -a hibernatemode 25
+
+# Disable powernap
+sudo pmset -a powernap 0
+sudo pmset -a standby 0
+sudo pmset -a standbydelay 0
+sudo pmset -a autopoweroff 0
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -27,24 +52,12 @@ defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -64,9 +77,6 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "Europe/Brussels" > /dev/null
 
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -82,8 +92,8 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Finder: disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool true
+# Finder: hide path bar
+defaults write com.apple.finder ShowPathbar -bool false
 
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
@@ -93,28 +103,18 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" $HOME/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" $HOME/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" $HOME/Library/Preferences/com.apple.finder.plist
-
-# Increase grid spacing for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" $HOME/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" $HOME/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" $HOME/Library/Preferences/com.apple.finder.plist
 
 # Increase the size of icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" $HOME/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" $HOME/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" $HOME/Library/Preferences/com.apple.finder.plist
 
 # Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
-
-# Enable AirDrop over Ethernet and on unsupported Macs running Lion
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
 chflags nohidden $HOME/Library
@@ -125,9 +125,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
     General -bool true \
     OpenWith -bool true \
     Privileges -bool true
-
-# Auto hide menu bar
-defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -161,19 +158,6 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
-
-# Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
-
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
-# Add iOS & Watch Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
 
 # Hot corners
 # Possible values:
@@ -221,9 +205,6 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
-
-# Disable automatic spell checking
-defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
@@ -275,8 +256,9 @@ defaults write com.apple.ical "number of hours displayed" 12
 # Week should start on Monday
 defaults write com.apple.ical "first day of the week" 1
 
-# Day starts at 9AM
+# Day starts at 6AM and ends at 3pm
 defaults write com.apple.ical "first minute of work hours" 360
+defaults write com.apple.ical "last minute of work hours" = 900
 
 ###############################################################################
 # Date & Time                                                                 #

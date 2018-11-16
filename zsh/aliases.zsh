@@ -1,9 +1,6 @@
 # PHPUNIT
 alias puf="phpunit --filter"
 
-# nvm
-alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-
 # LS
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -31,6 +28,7 @@ fi
 
 # Shrug
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
+alias fliptable="echo '(╯°□°）╯︵ ┻━┻' | pbcopy"
 
 # Reload
 alias reloadcli="source $HOME/.zshrc"
@@ -45,3 +43,11 @@ alias fs="stat -f \"%z bytes\""
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Config
+alias dotfiles="code $DOTFILES"
+alias sshconfig="code $HOME/.ssh"
+
+# Docker
+alias dockermysql="docker run --name mysql --rm -p 3306:3306 -e \"MYSQL_USER=homestead\" -e \"MYSQL_PASSWORD=secret\" -e \"MYSQL_ROOT_PASSWORD=secret\" -e \"MYSQL_DATABASE=homestead\" mysql:5.7"
+alias dockermaildev="docker run --name maildev --rm -p 25:25 -p 1080:80 djfarrelly/maildev"
